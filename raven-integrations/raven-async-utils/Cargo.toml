@@ -1,0 +1,19 @@
+[package]
+name = "raven-async-utils"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+async-trait.workspace = true
+tokio = { workspace = true, features = ["macros", "rt", "rt-multi-thread", "time"] }
+tokio-util.workspace = true
+
+[dev-dependencies]
+pretty_assertions.workspace = true

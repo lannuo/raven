@@ -1,0 +1,31 @@
+[package]
+name = "raven-responses-api-proxy"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description.workspace = true
+
+[lib]
+name = "raven_responses_api_proxy"
+path = "src/lib.rs"
+
+[[bin]]
+name = "raven-responses-api-proxy"
+path = "src/main.rs"
+
+[lints]
+workspace = true
+
+[dependencies]
+anyhow = { workspace = true }
+clap = { workspace = true, features = ["derive"] }
+raven-process-hardening = { workspace = true }
+ctor = { workspace = true }
+libc = { workspace = true }
+reqwest = { workspace = true, features = ["blocking", "json", "rustls-tls"] }
+serde = { workspace = true, features = ["derive"] }
+serde_json = { workspace = true }
+tiny_http = { workspace = true }
+zeroize = { workspace = true }

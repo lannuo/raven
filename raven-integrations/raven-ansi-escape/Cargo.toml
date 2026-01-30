@@ -1,0 +1,19 @@
+[package]
+name = "raven-ansi-escape"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+ansi-to-tui = { workspace = true }
+ratatui = { workspace = true, features = [
+    "unstable-rendered-line-info",
+    "unstable-widget-ref",
+] }
+tracing = { workspace = true, features = ["log"] }

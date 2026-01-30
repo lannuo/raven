@@ -1,0 +1,145 @@
+[workspace]
+resolver = "3"
+members = [
+    "raven/*",
+    "raven-integrations/*",
+    "raven-utils/*",
+    "raven-sandbox/*",
+]
+
+[workspace.package]
+edition = "2024"
+version = "1.0.0"
+authors = ["Ryan <lannuo54001@163.com>"]
+license = "Apache-2.0"
+repository = "https://github.com/lannuo/raven.git"
+description = "Axtensible AI agent"
+
+[workspace.lints.clippy]
+uninlined_format_args = "allow"
+string_slice = "warn"
+
+[workspace.dependencies]
+# Internal
+
+# raven-integrations
+raven-process-hardening = { path = "raven-integrations/raven-process-hardening" }
+
+# raven-utils
+raven-cache = { path = "raven-utils/raven-cache" }
+
+
+# External
+
+# async
+tokio = "1"
+tokio-stream = "0.1.18"
+tokio-test = "0.4"
+tokio-tungstenite = { version = "0.28.0", features = ["proxy", "rustls-tls-native-roots"] }
+tokio-util = "0.7.18"
+async-channel = "2.3.1"
+async-stream = "0.3.6"
+async-trait = "0.1.89"
+
+# lazy
+once_cell = "1.20.2"
+lazy_static = "1"
+zeroize = "1.8.2"
+
+# web
+reqwest = "0.12"
+tiny_http = "0.12"
+
+# socket
+uds_windows = "1.1.0"
+
+# ffi
+libc = "0.2.177"
+
+# serde
+serde = "1"
+serde_json = "1"
+serde_path_to_error = "0.1.20"
+serde_with = "3.16"
+serde_yaml = "0.9"
+schemars = "1.2.0"
+
+# error
+thiserror = "2.0.18"
+anyhow = "1"
+
+# log
+log = "0.4"
+
+# tracing
+tracing = "0.1.44"
+tracing-appender = "0.2.3"
+tracing-subscriber = "0.3.22"
+tracing-test = "0.2.5"
+
+# time
+time = "0.3"
+chrono = "0.4.43"
+
+# cache
+lru = "0.16.3"
+
+# hash
+sha1 = "0.10.6"
+
+# ts
+ts-rs = "11"
+
+# tui
+ansi-to-tui = "7.0.0"
+ratatui = "0.29.0"
+ratatui-macros = "0.6.0"
+
+# diff
+similar = "2.7.0"
+tree-sitter = "0.25.10"
+tree-sitter-bash = "0.25"
+tree-sitter-highlight = "0.25.10"
+
+# pretty
+pretty_assertions = "1.4.1"
+
+# path
+dirs = "6"
+walkdir = "2.5.0"
+path-absolutize = "3.1.1"
+
+# file
+tempfile = "3.24.0"
+ignore = "0.4.23"
+
+# assert
+assert_cmd = "2"
+assert_matches = "1.5.0"
+
+# regex
+regex = "1.12.2"
+regex-lite = "0.1.8"
+nucleo = { git = "https://github.com/helix-editor/nucleo.git", rev = "4253de9faabb4e5c6d81d946a5e35a90f87347ee" }
+
+# encode or decode
+base64 = "0.22.1"
+
+# image
+image = { version = "^0.25.9", default-features = false }
+
+# toml
+toml = "0.9.5"
+toml_edit = "0.24.0"
+
+# cli
+portable-pty = "0.9.0"
+clap = "4"
+clap_complete = "4"
+keyring = { version = "3.6", default-features = false }
+
+# message passing
+crossbeam-channel = "0.5.15"
+
+# constructor
+ctor = "0.6.3"
