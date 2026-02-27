@@ -1,5 +1,5 @@
 [package]
-name = "raven-string"
+name = "http-client"
 edition.workspace = true
 version.workspace = true
 authors.workspace = true

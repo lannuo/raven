@@ -1,10 +1,7 @@
 [workspace]
 resolver = "3"
 members = [
-    "raven/*",
-    "raven-integrations/*",
-    "raven-utils/*",
-    "raven-sandbox/*",
+    "utils/*",
 ]
 
 [workspace.package]
