@@ -10,4 +10,15 @@ description.workspace = true
 [lints]
 workspace = true
 
+[features]
+test-support = []
+
 [dependencies]
+anyhow.workspace = true
+bytes.workspace = true
+derive_more.workspace = true
+futures.workspace = true
+http-body.workspace = true
+http.workspace = true
+parking_lot.workspace = true
+url.workspace = true
