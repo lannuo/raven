@@ -1,7 +1,13 @@
-use anyhow::Result;
-use futures::stream::BoxStream;
+use anyhow::{Result, anyhow};
+use futures::{
+    AsyncBufReadExt, AsyncReadExt,
+    io::BufReader,
+    stream::{BoxStream, StreamExt},
+};
+use http_client::{AsyncBody, HttpClient, HttpRequest, Method};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
+use std::convert::TryFrom;
 
 pub const DEEPSEEK_API_URL: &str = "https://api.deepseek.com/v1";
 
@@ -252,4 +258,52 @@ pub struct ToolCallChunk {
 pub struct FunctionChunk {
     pub name: Option<String>,
     pub arguments: Option<String>,
+}
+
+pub async fn stream_completion(
+    client: &dyn HttpClient,
+    api_url: &str,
+    api_key: &str,
+    request: Request,
+) -> Result<BoxStream<'static, Result<StreamResponse>>> {
+    let uri = format!("{api_url}/chat/completions");
+    let request_builder = HttpRequest::builder()
+        .method(Method::POST)
+        .uri(uri)
+        .header("Content-Type", "application/json")
+        .header("Authorization", format!("Bearer {}", api_key.trim()));
+
+    let request = request_builder.body(AsyncBody::from(serde_json::to_string(&request)?))?;
+    let mut response = client.send(request).await?;
+
+    if response.status().is_success() {
+        let reader = BufReader::new(response.into_body());
+        Ok(reader
+            .lines()
+            .filter_map(|line| async move {
+                match line {
+                    Ok(line) => {
+                        let line = line.strip_prefix("data: ")?;
+                        if line == "[DONE]" {
+                            None
+                        } else {
+                            match serde_json::from_str(line) {
+                                Ok(response) => Some(Ok(response)),
+                                Err(error) => Some(Err(anyhow!(error))),
+                            }
+                        }
+                    }
+                    Err(error) => Some(Err(anyhow!(error))),
+                }
+            })
+            .boxed())
+    } else {
+        let mut body = String::new();
+        response.body_mut().read_to_string(&mut body).await?;
+        anyhow::bail!(
+            "Failed to connect to DeepSeek API: {} {}",
+            response.status(),
+            body,
+        );
+    }
 }
