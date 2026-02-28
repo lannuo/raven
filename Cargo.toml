@@ -1,6 +1,7 @@
 [workspace]
 resolver = "3"
 members = [
+    "providers/*",
     "utils/*",
 ]
 
@@ -18,12 +19,7 @@ string_slice = "warn"
 
 [workspace.dependencies]
 # Internal
-
-# raven-integrations
-raven-process-hardening = { path = "raven-integrations/raven-process-hardening" }
-
-# raven-utils
-raven-cache = { path = "raven-utils/raven-cache" }
+http-client = { path = "utils/http-client" }
 
 
 # External
@@ -73,7 +69,7 @@ serde_urlencoded = "0.7"
 serde_path_to_error = "0.1.20"
 serde_with = "3.16"
 serde_yaml = "0.9"
-schemars = "1.2.0"
+schemars = { version = "1.0", features = ["indexmap2"] }
 
 # error
 thiserror = "2.0.18"
