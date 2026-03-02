@@ -1,0 +1,21 @@
+[package]
+name = "settings-macros"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description.workspace = true
+
+[lib]
+proc-macro = true
+
+[lints]
+workspace = true
+
+[features]
+default = []
+
+[dependencies]
+quote.workspace = true
+syn.workspace = true

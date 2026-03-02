@@ -1,0 +1,24 @@
+[package]
+name = "settings-json"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description.workspace = true
+
+[lints]
+workspace = true
+
+[features]
+default = []
+
+[dependencies]
+util.workspace = true
+anyhow.workspace = true
+tree-sitter.workspace = true
+tree-sitter-json.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+serde_json_lenient.workspace = true
+serde_path_to_error.workspace = true
