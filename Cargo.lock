@@ -613,6 +613,10 @@ dependencies = [
 ]
 
 [[package]]
+name = "language-model"
+version = "1.0.0"
+
+[[package]]
 name = "libc"
 version = "0.2.182"
 source = "registry+https://github.com/rust-lang/crates.io-index"
