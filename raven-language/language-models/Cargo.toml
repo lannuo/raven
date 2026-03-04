@@ -1,0 +1,21 @@
+[package]
+name = "language-models"
+edition.workspace = true
+version.workspace = true
+authors.workspace = true
+license.workspace = true
+repository.workspace = true
+description.workspace = true
+
+[lints]
+workspace = true
+
+[dependencies]
+anthropic = { workspace = true, features = ["schemars"] }
+deepseek = { workspace = true, features = ["schemars"] }
+ollama = { workspace = true, features = ["schemars"] }
+openai = { workspace = true, features = ["schemars"] }
+openrouter = { workspace = true, features = ["schemars"] }
+
+serde.workspace = true
+serde_json.workspace = true

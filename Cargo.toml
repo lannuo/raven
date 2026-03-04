@@ -1,6 +1,7 @@
 [workspace]
 resolver = "3"
 members = [
+    "raven-gpui/*",
     "raven-language/*",
     "raven-providers/*",
     "raven-settings/*",
@@ -21,6 +22,7 @@ string_slice = "warn"
 
 [workspace.dependencies]
 # Internal
+# raven-utils
 util = { path = "raven-utils/util" }
 http-client = { path = "raven-utils/http-client" }
 collections = { path = "raven-utils/collections" }
@@ -28,6 +30,16 @@ settings-macros = { path = "raven-settings/settings-macros" }
 settings-json = { path = "raven-settings/settings-json" }
 settings-content = { path = "raven-settings/settings-content" }
 settings = { path = "raven-settings/settings" }
+
+# raven-providers
+anthropic = { path = "raven-providers/anthropic" }
+deepseek = { path = "raven-providers/deepseek" }
+ollama = { path = "raven-providers/ollama" }
+openai = { path = "raven-providers/openai" }
+openrouter = { path = "raven-providers/openrouter" }
+
+# raven-gpui
+env-vars = { path = "raven-gpui/env-vars" }
 
 
 # External
@@ -178,3 +190,6 @@ ctor = "0.6.3"
 
 # rand
 rand = "0.9"
+
+# ui
+gpui = { version = "0.2.2", default-features = false }

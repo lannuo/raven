@@ -1,5 +1,5 @@
 [package]
-name = "language-model"
+name = "env-vars"
 edition.workspace = true
 version.workspace = true
 authors.workspace = true
@@ -10,11 +10,8 @@ description.workspace = true
 [lints]
 workspace = true
 
+[features]
+default = []
+
 [dependencies]
 gpui.workspace = true
-env-vars.workspace = true
-
-anyhow.workspace = true
-futures.workspace = true
-thiserror.workspace = true
-log.workspace = true
