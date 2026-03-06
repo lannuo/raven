@@ -1,5 +1,5 @@
 [package]
-name = "language-model"
+name = "release-channel"
 edition.workspace = true
 version.workspace = true
 authors.workspace = true
@@ -11,11 +11,5 @@ description.workspace = true
 workspace = true
 
 [dependencies]
-credentials-provider.workspace = true
 gpui.workspace = true
-env-vars.workspace = true
-
-anyhow.workspace = true
-futures.workspace = true
-thiserror.workspace = true
-log.workspace = true
+semver.workspace = true

@@ -1,6 +1,7 @@
 use std::{fmt::Display, sync::Arc};
 
 use anyhow::{Result, anyhow};
+use credentials_provider::CredentialsProvider;
 use env_vars::EnvVar;
 use futures::future;
 use gpui::{AsyncApp, Context, SharedString, Task};

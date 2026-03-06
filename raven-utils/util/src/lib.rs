@@ -1,3 +1,6 @@
+pub mod paths;
+pub mod rel_path;
+
 use std::{
     borrow::Cow,
     cmp::{self, Ordering},
